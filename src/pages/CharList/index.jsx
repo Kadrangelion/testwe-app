@@ -25,8 +25,8 @@ const CharList = () => {
       })).then(responses => {
         responses.map(char => {
             const spouse = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
-            const mother = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
-            const father = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
+            const mother = char.mother !== '' ? getIdfromURI(char.mother) : '';
+            const father = char.father !== '' ? getIdfromURI(char.father) : '';
             const house = char.allegiances[0]  ? getIdfromURI(char.allegiances[0]) : '';
             charList.push({ ...char, id: getIdfromURI(char.url), spouse, mother, father, house });
           });
@@ -50,6 +50,12 @@ const CharList = () => {
   const getChar = (id) => {
     let result = {};
     characters.map(char => char.id === id ? result = char : null);
+    return result;
+  }
+
+  const getName = (id) => {
+    let result = '';
+    characters.map(char => char.id === id ? result = char.name : null);
     return result;
   }
 
@@ -79,9 +85,9 @@ const CharList = () => {
                 <td>{char.name}</td>
                 <td>{char.house ? <Link onClick={() => history.push(`/house/${char.house}`)}>{char.father}</Link> : "none"}</td>
                 <td>{char.gender}</td>
-                <td><Link onClick={() => history.push({ pathname: `/char/${char.father}`, state: { character: getChar(char.father) } })}>{char.father}</Link></td>
-                <td><Link onClick={() => history.push({ pathname: `/char/${char.mother}`, state: { character: getChar(char.mother) } })}>{char.mother}</Link></td>
-                <td><Link onClick={() => history.push({ pathname: `/char/${char.spouse}`, state: { character: getChar(char.spouse) } })}>{char.spouse}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.father}`, state: { character: getChar(char.father) } })}>{getName(char.father)}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.mother}`, state: { character: getChar(char.mother) } })}>{getName(char.mother)}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.spouse}`, state: { character: getChar(char.spouse) } })}>{getName(char.spouse)}</Link></td>
                 <td>{char.born}</td>
                 <td>{char.died}</td>
               </tr>)}
