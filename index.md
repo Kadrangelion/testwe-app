@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+# Testwe-app
 
-You can use the [editor on GitHub](https://github.com/Kadrangelion/testwe-app/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This project was created as an answer to a tech test.
+It uses styled-components, Axios & https://anapioficeandfire.com/
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Folder's tree
 
-### Markdown
+├──public\
+├──src\
+│ ├── components # Here we can find all components global to the app (inputs, layouts ...)\
+│ │ ├── Header\
+│ │ │ ├── index.jsx # Every components folder got this index.jsx where the component is defined\
+│ │ │ └── Header.style.js # Each component which required some styling will have this style.js file where styled-components will be use\
+│ │ ├── ...\
+│ │ └── index.js # In this file we export all our components. this allow cleaner imports in project files\
+│ ├── pages # Folder containing one folder/pages of our app\
+│ │ ├── Home\
+│ │ │ ├── index.jsx # The page definition and logic\
+│ │ │ └── Home.style.js # Style specific to our page\
+│ │ ├── ...\
+│ │ └── index.js # In this file we export all our pages. this allow cleaner imports in project files\
+│ ├── services # Folder containing our API calls\
+│ │ ├── GoT.js # File containing definion for all GoT API calls\
+│ │ └── ...\
+│ │ └── index.js # In this file we export all our services. this allow cleaner imports in project files\
+│ ├── styles # Folder containing global app styles and variables\
+│ ├── utils # Folder containing some usefull librairies and or function which can be called anywhere in project\
+│ ├── App.jsx\
+│ ├── index.jsx\
+│ └── ...\
+├── .gitignore\
+├── package-lock.json\
+├── package.json\
+└── README.MD\
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Available Scripts
 
-```markdown
-Syntax highlighted code block
+In the project directory, you can run:
 
-# Header 1
-## Header 2
-### Header 3
+### `npm start`
 
-- Bulleted
-- List
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-1. Numbered
-2. List
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-**Bold** and _Italic_ and `Code` text
+### `npm run build`
 
-[Link](url) and ![Image](src)
-```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Kadrangelion/testwe-app/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+The build is minified and the filenames include the hashes.\
+The app is ready to be deployed!
