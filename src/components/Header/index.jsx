@@ -7,8 +7,10 @@ const Header = () => {
   const location = useLocation();
   return (
     <HeaderContainer>
-      {location.pathname !== '/' && 
-        <HeaderReturn onClick={() => history.goBack()}>{'<'}</HeaderReturn>
+      {location.pathname !== '/' &&
+        <HeaderReturn onClick={() => history.goBack()} className="material-icons">
+          arrow_back_ios
+        </HeaderReturn>
       }
       <HeaderTitle>Game Of Thrones Books</HeaderTitle>
     </HeaderContainer>

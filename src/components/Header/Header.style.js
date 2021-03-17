@@ -9,11 +9,10 @@ export const HeaderContainer = styled.div`
   color: white;
 `
 
-export const HeaderReturn = styled.div`
+export const HeaderReturn = styled.span`
   width: fit-content;
   margin-right: 2rem;
   &:hover{
-    border-bottom: 1px solid orange;
     color: orange;
     cursor: pointer;
   }

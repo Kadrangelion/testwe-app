@@ -36,4 +36,10 @@ export const BookInfo = styled.div`
 `;
 
 export const Link = styled.div`
+  color: blue;
+  &:hover{
+    color: orange;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
