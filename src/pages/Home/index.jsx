@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { books } from '../../services';
+import { getIdfromURI } from '../../utils/misc';
 import { BookItem, HomeContainer, BookInfo, Link } from './Home.style';
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
             <div>Editeur: {book.publisher}</div>
             <div>Date de sortie: {book.released}</div>
           </BookInfo>
-          <Link onClick={() => history.push(`/book/${book.url.split('/')[(book.url.split('/').length-1)]}`)}>
+          <Link onClick={() => history.push(`/book/${getIdfromURI(book.url)}`)}>
             Voir les personnages du livre
           </Link>
         </BookItem>  
