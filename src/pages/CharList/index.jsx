@@ -83,7 +83,7 @@ const CharList = () => {
               <tr>
                 <td>{char.id}</td>
                 <td>{char.name}</td>
-                <td>{char.house ? <Link onClick={() => history.push(`/house/${char.house}`)}>{char.father}</Link> : "none"}</td>
+                <td>{char.house ? <Link onClick={() => history.push(`/house/${char.house}`)}>{char.house}</Link> : "none"}</td>
                 <td>{char.gender}</td>
                 <td><Link onClick={() => history.push({ pathname: `/char/${char.father}`, state: { character: getChar(char.father) } })}>{getName(char.father)}</Link></td>
                 <td><Link onClick={() => history.push({ pathname: `/char/${char.mother}`, state: { character: getChar(char.mother) } })}>{getName(char.mother)}</Link></td>
