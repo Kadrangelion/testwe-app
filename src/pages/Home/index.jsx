@@ -18,11 +18,11 @@ const Home = () => {
         <BookItem>
           <BookInfo>
             <div>{book.name}</div>
-            <div>Nombre de Page: {book.numberOfPages}</div>
-            <div>Editeur: {book.publisher}</div>
-            <div>Date de sortie: {book.released}</div>
+            <div><u>Nombre de Page:</u> {book.numberOfPages}</div>
+            <div><u>Editeur:</u> {book.publisher}</div>
+            <div><u>Date de sortie:</u> {book.released}</div>
           </BookInfo>
-          <Link onClick={() => history.push(`/book/${getIdfromURI(book.url)}`)}>
+          <Link onClick={() => history.push(`/charList/${getIdfromURI(book.url)}`)}>
             Voir les personnages du livre
           </Link>
         </BookItem>  

@@ -30,6 +30,11 @@ export const BookInfo = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  & div:first-child{
+    text-align:center;
+    font-weight: bold;
+    font-size: 16px;
+  }
   & > div{
     padding: 0.2rem;
   }
