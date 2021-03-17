@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const BookContainer = styled.div`
-  padding: 2rem;
-`
-
 export const CharTable = styled.table`
   margin-top: 1rem;
   border:2px solid black;

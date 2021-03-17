@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const HomeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-`;
-
 export const BookItem = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,15 +8,14 @@ export const BookItem = styled.div`
   width: 500px;
   border-radius: 3px;
   border: 1px solid black;
-  cursor: pointer;
   margin-top: 10px;
   height: 150px;
   transition: all 1s;
   align-items: center;
+  padding: 1rem;
   &:hover{
-    height: 200px;
-    width: 550px;
     background-color: lightgrey;
+    border-color: orange;
   }
 `;
 

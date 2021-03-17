@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { books } from '../../services';
+import { PageContainer } from '../../styles/global';
 import { getIdfromURI } from '../../utils/misc';
-import { BookItem, HomeContainer, BookInfo, Link } from './Home.style';
+import { BookItem, BookInfo, Link } from './Home.style';
 
 const Home = () => {
   const history = useHistory();
@@ -13,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <HomeContainer>
+    <PageContainer>
       {bookList.map(book => 
         <BookItem>
           <BookInfo>
@@ -27,7 +28,7 @@ const Home = () => {
           </Link>
         </BookItem>  
       )}
-    </HomeContainer>
+    </PageContainer>
   )
 }
 

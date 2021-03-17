@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Searchbar } from '../../components';
 import { books, characters as charAPI } from '../../services';
+import { PageContainer } from '../../styles/global';
 import { deepClone, getIdfromURI } from '../../utils/misc';
-import { BookContainer, BookTitle, CharTable, Link } from './CharList.style';
+import { BookTitle, CharTable, Link } from './CharList.style';
 
 const CharList = () => {
   const history = useHistory();
@@ -26,7 +27,8 @@ const CharList = () => {
             const spouse = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
             const mother = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
             const father = char.spouse !== '' ? getIdfromURI(char.spouse) : '';
-            charList.push({ ...char, id: getIdfromURI(char.url), spouse, mother, father });
+            const house = char.allegiances[0]  ? getIdfromURI(char.allegiances[0]) : '';
+            charList.push({ ...char, id: getIdfromURI(char.url), spouse, mother, father, house });
           });
           setCharacters(deepClone(charList));
           setFilteredCharacters(deepClone(charList));
@@ -45,8 +47,14 @@ const CharList = () => {
     }
   }, [searchTerm])
 
+  const getChar = (id) => {
+    let result = {};
+    characters.map(char => char.id === id ? result = char : null);
+    return result;
+  }
+
   return (
-    <BookContainer>
+    <PageContainer>
       <BookTitle>{book.name || ""}</BookTitle>
       <Searchbar label='Filtrer les personnages par nom' onSearch={(newValue) => setSearchTerm(newValue)} />
       { filteredCharacters.length !== 0 ?
@@ -55,6 +63,7 @@ const CharList = () => {
             <tr>
               <th>Id</th>
               <th>Nom</th>
+              <th>Maison</th>
               <th>Sexe</th>
               <th>Mère</th>
               <th>Père</th>
@@ -68,10 +77,11 @@ const CharList = () => {
               <tr>
                 <td>{char.id}</td>
                 <td>{char.name}</td>
+                <td>{char.house ? <Link onClick={() => history.push(`/house/${char.house}`)}>{char.father}</Link> : "none"}</td>
                 <td>{char.gender}</td>
-                <td><Link onClick={() => history.push(`/char/${char.father}`)}>{char.father}</Link></td>
-                <td><Link onClick={() => history.push(`/char/${char.mother}`)}>{char.mother}</Link></td>
-                <td><Link onClick={() => history.push(`/char/${char.spouse}`)}>{char.spouse}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.father}`, state: { character: getChar(char.father) } })}>{char.father}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.mother}`, state: { character: getChar(char.mother) } })}>{char.mother}</Link></td>
+                <td><Link onClick={() => history.push({ pathname: `/char/${char.spouse}`, state: { character: getChar(char.spouse) } })}>{char.spouse}</Link></td>
                 <td>{char.born}</td>
                 <td>{char.died}</td>
               </tr>)}
@@ -80,7 +90,7 @@ const CharList = () => {
         :
         <div>Récupération de la liste des personnages...</div>
       }
-    </BookContainer>
+    </PageContainer>
   )
 }
 
